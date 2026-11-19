@@ -185,7 +185,7 @@ root.innerHTML=String.raw`
     <div class="small">Mendel, nel 1866, ottenne da questo incrocio 556 semi: 315 gialli lisci, 101 gialli rugosi, 108 verdi lisci, 32 verdi rugosi. Molto vicino a 9:3:3:1.</div>
   </div>
 
-  <div class="note"><b>Il limite della terza legge.</b> Vale per geni su cromosomi diversi (o molto distanti sullo stesso cromosoma). Geni vicini tendono a essere ereditati insieme: è l'<b>associazione</b> (linkage), scoperta da Thomas H. Morgan nei moscerini della frutta.</div>
+  <div class="note"><b>Il limite della terza legge.</b> Vale per geni su cromosomi diversi (o molto distanti sullo stesso cromosoma). Geni vicini tendono a essere ereditati insieme: è l'<b>associazione</b> (<em>linkage</em>), scoperta da Thomas H. Morgan nei moscerini della frutta.</div>
 </div>
 
 <!-- ============ LAB ============ -->
@@ -206,7 +206,7 @@ root.innerHTML=String.raw`
   </div>
 
   <div class="card">
-    <h3 style="margin-top:0">Il reincrocio (test cross)</h3>
+    <h3 style="margin-top:0">Il reincrocio (<em>test cross</em>)</h3>
     <p>Hai un pisello giallo: è <span class="geno"><span class="al D">G</span><span class="al D">G</span></span> o <span class="geno"><span class="al D">G</span><span class="al r">g</span></span>? A vederlo non si capisce. Mendel lo incrociava con un omozigote recessivo <span class="geno"><span class="al r">g</span><span class="al r">g</span></span>:</p>
     <p style="margin:0">• se <b>tutti</b> i figli sono gialli → era <b>GG</b><br>• se circa <b>metà</b> sono verdi → era <b>Gg</b></p>
     <div class="btnrow"><button class="btn ghost" data-tc="GG">Prova con GG × gg</button><button class="btn ghost" data-tc="Gg">Prova con Gg × gg</button></div>
@@ -222,7 +222,7 @@ root.innerHTML=String.raw`
     <div class="card"><h4>Dominanza incompleta</h4><p>L'eterozigote ha un fenotipo intermedio. Bocca di leone rossa × bianca → F1 tutta <b>rosa</b>. In F2: 1 rossa : 2 rosa : 1 bianca. Gli alleli non si mescolano: il bianco e il rosso ricompaiono.</p></div>
     <div class="card"><h4>Codominanza</h4><p>Entrambi gli alleli si esprimono pienamente. Nei gruppi sanguigni, chi ha gli alleli A e B è di gruppo <b>AB</b>.</p></div>
     <div class="card"><h4>Allelia multipla</h4><p>Nella popolazione esistono più di due alleli per lo stesso gene (sistema AB0: A, B, 0), anche se ogni individuo ne porta solo due.</p></div>
-    <div class="card"><h4>Geni associati</h4><p>Geni vicini sullo stesso cromosoma non si assortiscono in modo indipendente: violano la terza legge, salvo quando il crossing-over li separa.</p></div>
+    <div class="card"><h4>Geni associati</h4><p>Geni vicini sullo stesso cromosoma non si assortiscono in modo indipendente: violano la terza legge, salvo quando il <em>crossing-over</em> li separa.</p></div>
     <div class="card"><h4>Eredità poligenica</h4><p>Statura, colore della pelle: molti geni con piccoli effetti sommati producono una variazione continua, non due classi nette.</p></div>
     <div class="card"><h4>Eredità legata al sesso</h4><p>Geni sul cromosoma X (es. daltonismo, emofilia) si manifestano con frequenze diverse nei maschi e nelle femmine.</p></div>
   </div>
