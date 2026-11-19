@@ -1,0 +1,122 @@
+#mendel{
+  --paper:#FDFAF3; --ink:#0E1A14; --muted:#5A7060; --line:rgba(196,154,60,0.28); --card:#FFFFFF;
+  --Y:#EDC340; --Yd:#B98F12; --G:#82B34F; --Gd:#4C7A27;
+  --dom:#2F5D8A; --rec:#B4533A; --accent:#2E5040; --soft:#FAF5E8;
+}
+#mendel .wrap{max-width:780px;margin:0 auto;padding:0 18px 80px}
+#mendel h3{font-size:19px;margin:22px 0 8px}
+#mendel .kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+#mendel .m-hero{padding:34px 0 18px}
+#mendel .hero p.lead{font-size:17px;color:var(--muted);max-width:60ch;margin-top:12px}
+#mendel .m-tabs{margin:0 0 6px;padding:4px 0 10px;flex-wrap:wrap;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+#mendel .m-tabs::-webkit-scrollbar{display:none}
+#mendel .m-tabs button{flex:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:7px 13px;font:600 13px Inter;cursor:pointer;white-space:nowrap}
+#mendel .m-tabs button.act{background:var(--ink);color:#fff;border-color:var(--ink)}
+#mendel .m-sec{padding-top:34px;scroll-margin-top:140px}
+#mendel .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0}
+#mendel .law{border-left:5px solid var(--accent);background:#fff;border-radius:12px;padding:14px 16px;margin:14px 0;font-size:16.5px}
+#mendel .law b{font-family:'Playfair Display',serif;font-size:18px;display:block;margin-bottom:4px}
+#mendel .note{font-size:14px;color:var(--muted);background:var(--soft);border-radius:12px;padding:12px 14px;margin:12px 0}
+#mendel .note b{color:var(--ink)}
+#mendel .btn{border:none;background:var(--ink);color:#fff;font:600 14px Inter;padding:10px 16px;border-radius:10px;cursor:pointer}
+#mendel .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+#mendel .btn:active{transform:scale(.97)}
+#mendel .btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+#mendel .small{font-size:13px;color:var(--muted)}
+#mendel /* alleli */
+.al{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:26px;padding:0 5px;border-radius:7px;font:700 15px Inter;margin:0 1px;vertical-align:middle}
+#mendel .al.aG{background:#F8E08A;color:#7A5C05;box-shadow:inset 0 0 0 1.5px var(--Yd)}
+#mendel .al.ag{background:#CFE4B6;color:#355D17;box-shadow:inset 0 0 0 1.5px var(--Gd)}
+#mendel .al.aL{background:#E2DAF2;color:#4E3A86;box-shadow:inset 0 0 0 1.5px #9C86C9}
+#mendel .al.al{background:#F3EFF9;color:#6F5FA0;box-shadow:inset 0 0 0 1.5px #C8BCE3}
+#mendel .geno{white-space:nowrap}
+#mendel /* glossario */
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:12px}
+#mendel .gloss div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font-size:14px}
+#mendel .gloss b{display:block;font-size:14.5px;margin-bottom:2px}
+#mendel /* stage animazioni */
+.stage{background:linear-gradient(#FFFDF8,#FBF6EA);border:1px solid var(--line);border-radius:16px;padding:16px 12px;margin:14px 0;text-align:center}
+#mendel .row{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin:6px 0}
+#mendel .ind{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:var(--muted)}
+#mendel .cross{font:700 22px 'Playfair Display';color:var(--muted)}
+#mendel .gen{font:700 11px Inter;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;width:100%;margin-top:8px}
+#mendel .arrow{font-size:20px;color:#B8AF9F;line-height:1}
+#mendel .st{opacity:0;transform:translateY(10px) scale(.9);transition:opacity .5s ease,transform .5s cubic-bezier(.3,1.5,.5,1)}
+#mendel .st.on{opacity:1;transform:none}
+#mendel .gam{width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:2px dashed #CFC5B2;background:#fff}
+#mendel .caption{min-height:46px;font-size:14.5px;margin-top:10px;color:var(--ink);transition:opacity .3s}
+#mendel .pea{display:block}
+#mendel .pop{animation:mpop .5s cubic-bezier(.3,1.6,.5,1)}
+#mendel /* punnett */
+table.pun{border-collapse:separate;border-spacing:5px;margin:8px auto}
+#mendel table.pun th{font-weight:600;padding:4px;transition:background .3s}
+#mendel table.pun th.hl{background:#FFF0B8;border-radius:8px}
+#mendel table.pun td{background:#fff;border:1px solid var(--line);border-radius:10px;width:78px;height:78px;text-align:center;vertical-align:middle;padding:3px;transition:all .3s}
+#mendel table.pun td .in{display:flex;flex-direction:column;align-items:center;gap:2px}
+#mendel table.pun.big td{width:62px;height:66px;font-size:11px}
+#mendel table.pun.big td.dim{opacity:.18}
+#mendel table.pun.big td.hi{box-shadow:0 0 0 2px var(--ink)}
+#mendel table.pun .gt{font:600 12px Inter;letter-spacing:.02em}
+#mendel .corner{font-size:11px;color:var(--muted)}
+#mendel /* barre */
+.bar{display:flex;height:30px;border-radius:9px;overflow:hidden;border:1px solid var(--line);background:#fff;margin:6px 0}
+#mendel .bar div{display:flex;align-items:center;justify-content:center;font:600 12px Inter;color:#2b2b2b;transition:width .4s ease;white-space:nowrap;overflow:hidden}
+#mendel .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:10px 0}
+#mendel .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center}
+#mendel .stat .n{font:700 24px 'Playfair Display'}
+#mendel .stat .l{font-size:12px;color:var(--muted)}
+#mendel .pod{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;min-height:30px;margin:8px 0}
+#mendel .ratio{font:700 28px 'Playfair Display';text-align:center;margin:6px 0}
+#mendel /* meiosi */
+#meiosis svg{width:100%;max-width:420px;height:auto}
+#mendel #meiosis .mv{transition:transform .8s cubic-bezier(.5,0,.3,1)}
+#mendel .tally{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+#mendel .tally .t{background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px 4px;text-align:center}
+#mendel .tally .vb{height:60px;display:flex;align-items:flex-end;justify-content:center}
+#mendel .tally .vb i{display:block;width:60%;background:var(--accent);border-radius:4px 4px 0 0;transition:height .4s}
+#mendel .tally .p{font:600 12px Inter;color:var(--muted)}
+#mendel /* legenda fenotipi */
+.legend{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:10px 0}
+#mendel .legend button{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;font:500 13.5px Inter;cursor:pointer;text-align:left;color:var(--ink)}
+#mendel .legend button.sel{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink)}
+#mendel .legend .cnt{margin-left:auto;font:700 18px 'Playfair Display'}
+#mendel table.data{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0}
+#mendel table.data th,#mendel table.data td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right}
+#mendel table.data th:first-child,#mendel table.data td:first-child{text-align:left}
+#mendel table.data th{font-size:12px;color:var(--muted);font-weight:600}
+#mendel /* lab */
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+#mendel .seg button{border:none;background:transparent;padding:8px 12px;font:600 14px Inter;cursor:pointer;color:var(--ink)}
+#mendel .seg button.sel{background:var(--ink);color:#fff}
+#mendel .labpick{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center;margin:8px 0}
+#mendel .labpick .lbl{font-size:12px;color:var(--muted);display:block;margin-bottom:4px;text-align:center}
+#mendel /* oltre */
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+#mendel .grid2 .card{margin:0}
+#mendel .grid2 h4{margin:0 0 6px;font:700 16px 'Playfair Display'}
+#mendel .grid2 p{font-size:14px;color:var(--muted);margin:0}
+#mendel /* quiz */
+.q{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin:10px 0}
+#mendel .q .qt{font-weight:600;margin-bottom:8px}
+#mendel .q .opts{display:flex;flex-direction:column;gap:6px}
+#mendel .q .opts button{text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:9px 12px;font:500 14px Inter;cursor:pointer;color:var(--ink)}
+#mendel .q .opts button.ok{background:#E5F2DA;border-color:#7DAE4E}
+#mendel .q .opts button.no{background:#F7E1DA;border-color:#C9765D}
+#mendel .q .fb{font-size:13.5px;color:var(--muted);margin-top:8px;display:none}
+#mendel .q.done .fb{display:block}
+#mendel #score{font:700 18px 'Playfair Display';text-align:center;margin-top:8px}
+#mendel footer{margin-top:40px;font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+@keyframes mpop{from{transform:scale(.3);opacity:0}to{transform:scale(1);opacity:1}}
+#mendel .kicker{color:#C49A3C}
+#mendel h2{margin-bottom:6px}
+#mendel h3{margin:22px 0 8px}
+#mendel .btn{background:#1A3028}
+#mendel .btn.ghost{background:transparent;color:#1A3028;border:1px solid var(--line)}
+#mendel .m-tabs button.act{background:#1A3028;border-color:#1A3028}
+#mendel .law{border-left-color:#1A3028}
+#mendel .stage{background:linear-gradient(#FFFDF8,#FAF5E8)}
+#mendel .bridge{background:#1A3028;color:#FDFAF3;border-radius:10px;padding:20px 22px;margin:6px 0 10px;border-top:3px solid #C49A3C}
+#mendel .bridge p{color:rgba(253,250,243,.88);font-size:.92rem}
+#mendel .bridge h3{color:#D4AF62;margin-top:0}
+#mendel .bridge b{color:#fff}
+#mendel .m-foot{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:40px}

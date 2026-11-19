@@ -19,7 +19,7 @@ Le dashboard hanno uno scopo didattico, rivolte agli studenti del liceo.
 
 | Anno | Argomento | Link | Stato |
 |---|---|---|---|
-| Quinta | Darwin e il darwinismo | — | 🛠 In lavorazione |
+| Quinta | Darwin e il darwinismo | [darwin/](https://vfbrugnola.github.io/storia_della_filosofia/darwin/) | ✅ Disponibile |
 
 ---
 

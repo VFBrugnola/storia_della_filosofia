@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darwin e il Darwinismo — Dashboard Didattica</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest:    #1A3028;
+  --forest-mid:#2E5040;
+  --gold:      #C49A3C;
+  --gold-light:#D4AF62;
+  --gold-pale: #F0E4C4;
+  --gold-faint:#FAF5E8;
+  --cream:     #FDFAF3;
+  --ink:       #0E1A14;
+  --ink-soft:  #2A3D32;
+  --ink-muted: #5A7060;
+  --divider:   rgba(196,154,60,0.22);
+  --shadow-sm: 0 1px 4px rgba(26,48,40,0.10);
+  --shadow-md: 0 3px 12px rgba(26,48,40,0.13);
+  --radius:    10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  min-height:100vh;
+}
+
+/* ── HEADER ─────────────────────────────────────────────── */
+header{
+  background:var(--forest);
+  color:var(--cream);
+  padding:36px 40px 30px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+header::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 50% -10%, rgba(196,154,60,.18) 0%, transparent 70%);
+  pointer-events:none;
+}
+.header-eyebrow{
+  font-size:.72rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  margin-bottom:12px;
+  font-weight:500;
+}
+header h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem;
+  font-weight:700;
+  letter-spacing:-.01em;
+  line-height:1.15;
+  margin-bottom:10px;
+}
+header h1 em{
+  font-style:italic;
+  color:var(--gold-light);
+}
+.header-rule{
+  width:48px;height:1px;
+  background:var(--gold);
+  margin:0 auto 10px;
+  opacity:.7;
+}
+.header-sub{
+  font-size:.88rem;
+  color:rgba(253,250,243,.55);
+  font-style:italic;
+  font-family:'Playfair Display',serif;
+}
+
+/* ── NAV ────────────────────────────────────────────────── */
+nav{
+  display:flex;flex-wrap:nowrap;gap:4px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  padding:14px 28px;
+  background:#fff;
+  border-bottom:1px solid var(--divider);
+  justify-content:flex-start;
+  position:sticky;top:0;z-index:100;
+  box-shadow:var(--shadow-sm);
+}
+nav::-webkit-scrollbar{display:none}
+nav button:first-child{margin-left:auto}
+nav button:last-child{margin-right:auto}
+nav button{
+  flex:none;white-space:nowrap;
+  font-family:'Inter',sans-serif;
+  font-size:.82rem;font-weight:500;
+  padding:7px 16px;
+  border:1.5px solid transparent;
+  border-radius:20px;
+  background:transparent;
+  color:var(--ink-muted);
+  cursor:pointer;
+  transition:all .18s;
+  letter-spacing:.01em;
+}
+nav button:hover{
+  color:var(--forest);
+  background:var(--gold-faint);
+  border-color:var(--divider);
+}
+nav button.active{
+  background:var(--forest);
+  color:var(--cream);
+  border-color:var(--forest);
+}
+
+/* ── SECTIONS ───────────────────────────────────────────── */
+.section{display:none;padding:36px 32px;max-width:980px;margin:0 auto}
+.section.visible{display:block}
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.75rem;font-weight:700;
+  color:var(--forest);
+  margin-bottom:6px;
+}
+.section-rule{
+  height:2px;width:100%;
+  background:linear-gradient(to right, var(--gold) 0%, transparent 60%);
+  margin-bottom:24px;opacity:.5;
+}
+h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+p{line-height:1.75;margin-bottom:12px;color:var(--ink-soft)}
+
+/* ── VITA / TIMELINE ────────────────────────────────────── */
+.timeline{position:relative;padding-left:36px}
+.timeline::before{
+  content:'';position:absolute;
+  left:11px;top:0;bottom:0;width:2px;
+  background:linear-gradient(to bottom,var(--gold) 0%,var(--gold-pale) 100%);
+  opacity:.6;
+}
+.tl-item{position:relative;margin-bottom:28px}
+.tl-dot{
+  position:absolute;left:-29px;top:5px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--forest);
+  border:2.5px solid var(--gold);
+}
+.tl-year{
+  font-weight:600;font-size:.75rem;
+  color:var(--gold);
+  letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:3px;
+}
+.tl-text{font-size:.93rem;color:var(--ink-soft);line-height:1.7}
+
+/* ── CONCEPT CARDS ──────────────────────────────────────── */
+.concept-card{
+  background:#fff;
+  border:1px solid var(--divider);
+  border-radius:var(--radius);
+  margin-bottom:10px;
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .18s;
+}
+.concept-card:hover{box-shadow:var(--shadow-md)}
+.concept-header{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:14px 18px;
+  cursor:pointer;user-select:none;
+}
+.concept-header:hover{background:var(--gold-faint)}
+.concept-icon{font-size:1.3rem;margin-right:12px;flex-shrink:0}
+.concept-title{font-weight:600;font-size:.95rem;color:var(--ink)}
+.concept-arrow{
+  color:var(--gold);font-size:1rem;
+  transition:transform .2s;flex-shrink:0;
+}
+.concept-card.open .concept-arrow{transform:rotate(90deg)}
+.concept-body{
+  display:none;
+  padding:0 18px 18px;
+  border-top:1px solid var(--divider);
+}
+.concept-card.open .concept-body{display:block}
+.concept-body p{margin-top:14px;font-size:.91rem}
+.tag{
+  display:inline-block;
+  background:var(--forest);color:var(--gold-light);
+  font-size:.68rem;font-weight:600;
+  padding:3px 10px;border-radius:12px;
+  margin-top:14px;margin-bottom:2px;
+  letter-spacing:.07em;text-transform:uppercase;
+}
+
+/* ── BEAGLE MAP ─────────────────────────────────────────── */
+#beagle-map-container{
+  background:#fff;
+  border:1px solid var(--divider);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-md);
+  overflow:hidden;
+  margin-bottom:24px;
+}
+.map-title{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;color:var(--forest);
+  padding:12px 20px 10px;
+  border-bottom:1px solid var(--divider);
+  display:flex;align-items:center;gap:8px;
+  font-style:italic;
+}
+#leaflet-map{height:420px;width:100%}
+#stop-info-panel{
+  display:none;
+  background:var(--gold-faint);
+  border-top:2px solid var(--gold);
+  padding:18px 22px;
+}
+#stop-info-panel.visible{display:block}
+#stop-info-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:700;
+  color:var(--forest);margin-bottom:2px;
+}
+#stop-info-date{
+  font-size:.75rem;color:var(--gold);
+  font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:10px;
+}
+#stop-info-desc{font-size:.91rem;line-height:1.7;color:var(--ink-soft)}
+#stop-info-insight{
+  margin-top:12px;padding:11px 16px;
+  background:rgba(255,255,255,.75);
+  border-left:3px solid var(--forest-mid);
+  border-radius:4px;
+  font-size:.86rem;font-style:italic;color:var(--ink-soft);
+}
+.btn-close-stop{
+  float:right;background:none;border:none;
+  font-size:1.2rem;cursor:pointer;
+  color:var(--ink-muted);line-height:1;margin-top:2px;
+  transition:color .15s;
+}
+.btn-close-stop:hover{color:var(--forest)}
+.map-legend-row{
+  display:flex;gap:20px;flex-wrap:wrap;
+  padding:10px 20px;font-size:.78rem;
+  color:var(--ink-muted);
+  border-top:1px solid var(--divider);
+  background:rgba(250,245,232,.5);
+}
+.map-legend-row span{display:flex;align-items:center;gap:6px}
+.stops-legend{
+  margin-top:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:6px;
+}
+.legend-item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;
+  background:#fff;
+  border:1px solid var(--divider);
+  border-radius:8px;cursor:pointer;
+  font-size:.83rem;color:var(--ink-soft);
+  transition:all .15s;
+}
+.legend-item:hover{background:var(--gold-faint);border-color:var(--gold)}
+.legend-num{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--forest-mid);color:#fff;
+  font-size:.7rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.legend-num.gal{background:var(--forest)}
+
+/* ── PREDECESSORI ───────────────────────────────────────── */
+.pred-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:14px;margin-bottom:28px;
+}
+.pred-card{
+  background:#fff;
+  border:1px solid var(--divider);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .18s;
+}
+.pred-card:hover{box-shadow:var(--shadow-md)}
+.pred-name{font-weight:700;font-size:.97rem;color:var(--forest);margin-bottom:2px}
+.pred-year{font-size:.75rem;color:var(--gold);margin-bottom:10px;font-weight:500}
+.pred-desc{font-size:.86rem;line-height:1.65}
+
+/* ── OPERA ──────────────────────────────────────────────── */
+.opera-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:14px;margin-bottom:28px;
+}
+.book-card{
+  background:var(--forest);
+  color:var(--cream);
+  border-radius:var(--radius);
+  padding:22px 18px;
+  box-shadow:var(--shadow-md);
+  border-top:3px solid var(--gold);
+}
+.book-title{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:1rem;
+  margin-bottom:4px;color:var(--gold-light);
+}
+.book-year{font-size:.74rem;opacity:.55;margin-bottom:12px;letter-spacing:.04em}
+.book-desc{font-size:.84rem;opacity:.88;line-height:1.65;color:rgba(253,250,243,.85)}
+
+/* ── IMPATTO ────────────────────────────────────────────── */
+.impact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:14px;margin-bottom:28px;
+}
+.impact-card{
+  background:#fff;
+  border:1px solid var(--divider);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .18s;
+}
+.impact-card:hover{box-shadow:var(--shadow-md)}
+.impact-card::before{
+  content:'';display:block;
+  height:3px;border-radius:2px;
+  margin-bottom:14px;
+  background:var(--gold);
+}
+.impact-card:nth-child(2)::before{background:#2E6E4A}
+.impact-card:nth-child(3)::before{background:#8B1A1A}
+.impact-card:nth-child(4)::before{background:#1A4A8B}
+.impact-card:nth-child(5)::before{background:#6B1A8B}
+.impact-title{font-weight:700;font-size:.93rem;margin-bottom:8px;color:var(--forest)}
+.impact-desc{font-size:.86rem;line-height:1.65}
+.note-box{
+  margin-top:28px;
+  padding:20px 22px;
+  background:#fff;
+  border-radius:var(--radius);
+  border-left:4px solid var(--forest-mid);
+  box-shadow:var(--shadow-sm);
+}
+
+/* ── LETTURE ── */
+.read-list{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.read-card{display:flex;gap:18px;background:#fff;border:1px solid var(--divider);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm)}
+.read-spine{flex:none;width:54px;min-height:78px;border-radius:3px 6px 6px 3px;background:var(--forest);border-left:5px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic}
+.read-title{font-family:'Playfair Display',serif;font-style:italic;font-size:1.08rem;color:var(--forest);font-weight:600;line-height:1.3}
+.read-author{font-size:.86rem;font-weight:600;color:var(--ink-soft);margin-top:3px}
+.read-meta{font-size:.76rem;color:var(--gold);margin:2px 0 8px;letter-spacing:.03em}
+.read-desc{font-size:.87rem;line-height:1.65;color:var(--ink-soft);margin:0}
+.read-tags{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.read-tags span{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:12px;background:var(--gold-faint);color:var(--forest-mid);border:1px solid var(--divider)}
+
+.read-link{display:block;text-decoration:none;background:#fff;border:1px solid var(--divider);border-left:4px solid var(--gold);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow-sm);transition:box-shadow .18s}
+.read-link:hover{box-shadow:var(--shadow-md)}
+.read-link-src{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.read-link-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--forest);margin:4px 0 6px}
+.read-link-author{font-size:.84rem;font-weight:600;color:var(--ink-soft);margin:-2px 0 6px}
+.read-link-desc{font-size:.87rem;line-height:1.6;color:var(--ink-soft)}
+.read-link-go{font-size:.8rem;font-weight:600;color:var(--forest-mid);margin-top:10px}
+
+@media(max-width:600px){
+  header h1{font-size:1.75rem}
+  .read-card{gap:14px;padding:15px}
+  .read-spine{width:40px;min-height:60px;font-size:1.05rem}
+  .section{padding:24px 18px}
+  .stops-legend{grid-template-columns:1fr}
+  .pred-grid,.opera-grid,.impact-grid{grid-template-columns:1fr}
+}
+</style>
+<style>
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}
+.leaflet-container{overflow:hidden;outline:0;background:#aad3df}
+.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}
+.leaflet-tile::selection{background:transparent}
+.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}
+.leaflet-zoom-animated{-webkit-transform-origin:0 0;transform-origin:0 0}
+.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-zoom-anim .leaflet-tile{transition:none}
+.leaflet-pan-anim .leaflet-tile,.leaflet-touching .leaflet-zoom-animated{transition:none}
+.leaflet-zoom-anim .leaflet-zoom-animated.leaflet-zoom-hide{visibility:hidden}
+.leaflet-interactive{cursor:pointer}
+.leaflet-grab{cursor:-webkit-grab;cursor:grab}
+.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}
+.leaflet-popup-pane,.leaflet-control{cursor:auto}
+.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:grabbing}
+.leaflet-image-layer,.leaflet-layer>canvas{position:absolute;left:0;top:0}
+.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container,.leaflet-tile-container svg,.leaflet-zoom-box{pointer-events:none}
+.leaflet-marker-icon.leaflet-interactive,.leaflet-image-layer.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}
+.leaflet-container.leaflet-touch-zoom{touch-action:pan-x pan-y}
+.leaflet-container.leaflet-touch-drag{touch-action:pinch-zoom;touch-action:none}
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{touch-action:none}
+.leaflet-container .leaflet-overlay-pane svg{-moz-user-select:none}
+.leaflet-pane{z-index:400}
+.leaflet-tile-pane{z-index:200}
+.leaflet-overlay-pane{z-index:400}
+.leaflet-shadow-pane{z-index:500}
+.leaflet-marker-pane{z-index:600}
+.leaflet-tooltip-pane{z-index:650}
+.leaflet-popup-pane{z-index:700}
+.leaflet-map-pane canvas{z-index:100}
+.leaflet-map-pane svg{z-index:200}
+.leaflet-vml-shape{width:1px;height:1px}
+.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}
+.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}
+.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}
+.leaflet-top{top:0}
+.leaflet-right{right:0}
+.leaflet-bottom{bottom:0}
+.leaflet-left{left:0}
+.leaflet-control{float:left;clear:both}
+.leaflet-right .leaflet-control{float:right}
+.leaflet-top .leaflet-control{margin-top:10px}
+.leaflet-bottom .leaflet-control{margin-bottom:10px}
+.leaflet-left .leaflet-control{margin-left:10px}
+.leaflet-right .leaflet-control{margin-right:10px}
+.leaflet-fade-anim .leaflet-popup{opacity:0;transition:opacity .2s linear}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}
+.leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-tile{filter:inherit;visibility:hidden}
+.leaflet-tile-loaded{visibility:inherit}
+.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}
+.leaflet-overlay-pane svg,.leaflet-zoom-box,.leaflet-marker-pane .leaflet-zoom-animated,.leaflet-shadow-pane .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-container{background:#dde;outline:0}
+.leaflet-container a{color:#0078a8}
+.leaflet-container a.leaflet-active{outline:2px solid orange}
+.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}
+.leaflet-container{font:12px/1.5 "Helvetica Neue",Arial,Helvetica,sans-serif}
+.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}
+.leaflet-bar a,.leaflet-bar a:hover{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#444}
+.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}
+.leaflet-bar a:hover,.leaflet-bar a:focus{background-color:#f4f4f4}
+.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}
+.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}
+.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}
+.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}
+.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}
+.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}
+.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px "Lucida Console",Monaco,monospace;text-indent:1px}
+.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}
+.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}
+.leaflet-control-layers-toggle{background-image:url(data:image/png;base64,);width:36px;height:36px}
+.leaflet-retina .leaflet-control-layers-toggle{background-size:26px 26px}
+.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}
+.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}
+.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}
+.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}
+.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}
+.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}
+.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}
+.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}
+.leaflet-default-icon-path{background-image:url(data:image/png;base64,)}
+.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}
+.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;font-size:11px}
+.leaflet-control-attribution a{text-decoration:none}
+.leaflet-control-attribution a:hover,.leaflet-control-attribution a:focus{text-decoration:underline}
+.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}
+.leaflet-left .leaflet-control-scale{margin-left:5px}
+.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}
+.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;font-size:11px;white-space:nowrap;overflow:hidden;-moz-box-sizing:border-box;box-sizing:border-box;background:#fff;background:rgba(255,255,255,.8)}
+.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}
+.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}
+.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar{box-shadow:none}
+.leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}
+.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}
+.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}
+.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-left:-20px;overflow:hidden;pointer-events:none}
+.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{pointer-events:auto}
+.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:transparent}
+.leaflet-popup-close-button:hover,.leaflet-popup-close-button:focus{color:#585858}
+.leaflet-popup-scrolled{overflow:auto}
+.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}
+.leaflet-oldie .leaflet-popup-tip{width:24px;-ms-filter:"progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678,M12=0.70710678,M21=-0.70710678,M22=0.70710678)}
+.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:1.08333em}
+.leaflet-popup-content p{margin:17px 0}
+.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}
+.leaflet-tooltip-top:before,.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{position:absolute;pointer-events:none;border:6px solid transparent;background:transparent;content:""}
+.leaflet-tooltip-bottom{margin-top:6px}
+.leaflet-tooltip-top{margin-top:-6px}
+.leaflet-tooltip-bubble{max-width:200px;white-space:normal}
+.leaflet-tooltip-left{margin-left:-6px}
+.leaflet-tooltip-right{margin-left:6px}
+.leaflet-tooltip-top:before{bottom:0;left:50%;margin-left:-6px;border-top-color:#fff}
+.leaflet-tooltip-bottom:before{top:0;left:50%;margin-left:-6px;border-bottom-color:#fff}
+.leaflet-tooltip-left:before{top:50%;right:0;margin-top:-6px;border-left-color:#fff}
+.leaflet-tooltip-right:before{top:50%;left:0;margin-top:-6px;border-right-color:#fff}
+.leaflet-disabled{pointer-events:none;cursor:default;opacity:.4}
+</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- VIAGGIO DEL BEAGLE -->
+<link rel="stylesheet" href="mendel.css">
+<header>
+  <a href="../" style="position:absolute;left:20px;top:16px;font-size:.78rem;color:var(--gold-light);text-decoration:none;letter-spacing:.04em">&larr; Storia della Filosofia</a>
+  <div class="header-eyebrow">1809 — 1882</div>
+  <h1>Charles Darwin<br><em>e il Darwinismo</em></h1>
+  <div class="header-rule"></div>
+  <p class="header-sub">Origini, teoria, lascito intellettuale</p>
+</header>
+<nav>
+  <button onclick="showSection('vita')" class="active" id="btn-vita">Vita</button>
+  <button onclick="showSection('concetti')" id="btn-concetti">Concetti chiave</button>
+  <button onclick="showSection('beagle')" id="btn-beagle">Viaggio del Beagle</button>
+  <button onclick="showSection('predecessori')" id="btn-predecessori">Predecessori</button>
+  <button onclick="showSection('opera')" id="btn-opera">Opera</button>
+  <button onclick="showSection('mendel')" id="btn-mendel">Mendel e l'ereditarietà</button>
+  <button onclick="showSection('impatto')" id="btn-impatto">Impatto culturale</button>
+  <button onclick="showSection('letture')" id="btn-letture">Letture consigliate</button>
+</nav>
+<!-- VITA -->
+<div id="vita" class="section visible">
+  <h2>Vita di Charles Darwin (1809–1882)</h2>
+  <div class="section-rule"></div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1809</div><div class="tl-text">Nasce a Shrewsbury, Inghilterra, in una famiglia agiata. Il padre Robert è medico; il nonno Erasmus Darwin aveva già speculato sull'evoluzione.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1825–1831</div><div class="tl-text">Studia medicina a Edimburgo (abbandona) poi teologia a Cambridge. Sviluppa una passione per la storia naturale, la geologia e la caccia agli insetti.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1831–1836</div><div class="tl-text">Imbarco sul HMS Beagle come naturalista non ufficiale. Il viaggio circumnaviga il globo in cinque anni: l'esperienza fondante della sua teoria.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1837</div><div class="tl-text">Apre il primo taccuino sulla "trasmutazione delle specie". Inizia a elaborare segretamente la teoria dell'evoluzione per selezione naturale.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1839</div><div class="tl-text">Sposa la cugina Emma Wedgwood. Pubblica il <em>Diario di viaggio</em> del Beagle. Iniziano i problemi di salute cronici (origine controversa).</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1842–1844</div><div class="tl-text">Redige un abbozzo di 35 pagine e poi un saggio di 230 pagine sulla selezione naturale. Non pubblica ancora: teme le reazioni.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1858</div><div class="tl-text">Alfred Russel Wallace gli invia un manoscritto con una teoria identica. Presentazione congiunta Wallace–Darwin alla Linnean Society di Londra.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1859</div><div class="tl-text">Pubblica <em>L'origine delle specie</em>. Prima edizione esaurita il giorno stesso. Scandalo e dibattito immediato in tutta Europa.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1871</div><div class="tl-text">Pubblica <em>L'origine dell'uomo</em>: applica esplicitamente la selezione naturale alla specie umana. Controversia ancora più accesa.</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1882</div><div class="tl-text">Muore a Down House. Viene sepolto nell'Abbazia di Westminster, vicino a Isaac Newton: riconoscimento istituzionale della scienza vittoriana.</div></div>
+  </div>
+</div>
+
+<!-- CONCETTI CHIAVE -->
+<div id="concetti" class="section">
+  <h2>Concetti chiave del Darwinismo</h2>
+  <div class="section-rule"></div>
+
+  <div class="concept-card" onclick="toggleConcept(this)">
+    <div class="concept-header">
+      <div style="display:flex;align-items:center"><span class="concept-icon">🔄</span><span class="concept-title">Variazione e discendenza con modificazione</span></div>
+      <span class="concept-arrow">▶</span>
+    </div>
+    <div class="concept-body">
+      <span class="tag">Fondamento</span>
+      <p>Gli individui di una specie non sono identici: presentano variazioni ereditabili. Darwin osserva che i figli assomigliano ai genitori ma non sono copie esatte. Queste variazioni sono il "materiale grezzo" su cui agisce la selezione. Le specie non sono fisse ma si modificano nel tempo: le specie attuali discendono da antenati comuni.</p>
+    </div>
+  </div>
+
+  <div class="concept-card" onclick="toggleConcept(this)">
+    <div class="concept-header">
+      <div style="display:flex;align-items:center"><span class="concept-icon">⚔️</span><span class="concept-title">Lotta per l'esistenza</span></div>
+      <span class="concept-arrow">▶</span>
+    </div>
+    <div class="concept-body">
+      <span class="tag">Meccanismo</span>
+      <p>Ispirato da Malthus: le popolazioni tendono a crescere geometricamente, ma le risorse sono limitate. Ne deriva una competizione per sopravvivere e riprodursi. La "lotta" non è solo predazione diretta, ma include competizione per cibo, spazio, partner riproduttivi, resistenza al clima. Darwin precisa: "lotta" va intesa in senso metaforico ampio.</p>
+    </div>
+  </div>
+
+  <div class="concept-card" onclick="toggleConcept(this)">
+    <div class="concept-header">
+      <div style="display:flex;align-items:center"><span class="concept-icon">🏆</span><span class="concept-title">Selezione naturale</span></div>
+      <span class="concept-arrow">▶</span>
+    </div>
+    <div class="concept-body">
+      <span class="tag">Nucleo teorico</span>
+      <p>Gli individui con variazioni vantaggiose nell'ambiente dato hanno più probabilità di sopravvivere e riprodursi. Trasmettono tali variazioni alla prole. Nel tempo, le variazioni vantaggiose si accumulano nella popolazione: la specie cambia. <strong>Attenzione</strong>: la selezione non ha scopo né direzione. Non "vuole" nulla. È un processo cieco e meccanico — punto di massima distanza dal finalismo.</p>
+    </div>
+  </div>
+
+  <div class="concept-card" onclick="toggleConcept(this)">
+    <div class="concept-header">
+      <div style="display:flex;align-items:center"><span class="concept-icon">🌳</span><span class="concept-title">Antenato comune e albero della vita</span></div>
+      <span class="concept-arrow">▶</span>
+    </div>
+    <div class="concept-body">
+      <span class="tag">Visione d'insieme</span>
+      <p>Tutte le specie viventi condividono antenati comuni. Se si seguono i rami dell'albero della vita abbastanza indietro nel tempo, ogni coppia di specie converge a un punto di origine comune. L'unico diagramma dell'<em>Origine delle specie</em> è proprio un albero ramificato. Questa visione rompe la scala della natura medievale e il poligenismo: l'umanità è una.</p>
+    </div>
+  </div>
+
+  <div class="concept-card" onclick="toggleConcept(this)">
+    <div class="concept-header">
+      <div style="display:flex;align-items:center"><span class="concept-icon">⏳</span><span class="concept-title">Tempo geologico e gradualismo</span></div>
+      <span class="concept-arrow">▶</span>
+    </div>
+    <div class="concept-body">
+      <span class="tag">Presupposto</span>
+      <p>La selezione naturale agisce lentamente, in milioni di anni. Darwin dipende da Lyell e dalla geologia uniformitarista: la Terra ha miliardi di anni. Senza tempo profondo, la selezione non può produrre la diversità osservata. Il gradualismo è una delle posizioni più contestate nella biologia evolutiva moderna (Gould propone i saltazionismi).</p>
+    </div>
+  </div>
+
+  <div class="concept-card" onclick="toggleConcept(this)">
+    <div class="concept-header">
+      <div style="display:flex;align-items:center"><span class="concept-icon">🧬</span><span class="concept-title">Selezione sessuale</span></div>
+      <span class="concept-arrow">▶</span>
+    </div>
+    <div class="concept-body">
+      <span class="tag">Integrazione</span>
+      <p>Introdotta nell'<em>Origine</em> e sviluppata nell'<em>Origine dell'uomo</em> (1871). Alcuni caratteri non aumentano la sopravvivenza ma aumentano il successo riproduttivo: la coda del pavone, le corna degli ungulati. Due meccanismi: competizione intrasessuale (tra maschi) e scelta del partner (da parte delle femmine). Ha implicazioni filosofiche forti sull'estetica come fenomeno biologico.</p>
+    </div>
+  </div>
+
+  <div class="concept-card" onclick="toggleConcept(this)">
+    <div class="concept-header">
+      <div style="display:flex;align-items:center"><span class="concept-icon">🦒</span><span class="concept-title">Lamarck vs Darwin — l'esempio della giraffa</span></div>
+      <span class="concept-arrow">▶</span>
+    </div>
+    <div class="concept-body">
+      <span class="tag">Confronto</span>
+      <p><strong>Lamarck</strong> spiega il collo lungo della giraffa con l'<em>uso dell'organo</em>: le giraffe si allungano il collo per raggiungere le foglie in alto; questo sforzo sviluppa l'organo; il collo allungato si trasmette alla prole. I caratteri acquisiti si ereditano.</p>
+      <p style="margin-top:10px"><strong>Darwin</strong> rifiuta questa logica. Nella popolazione primitiva di giraffe esistevano individui con colli di lunghezze diverse (variazioni casuali). In un ambiente con scarsità di cibo basso, gli individui con collo più lungo raggiungevano foglie inaccessibili agli altri → sopravvivevano meglio e si riproducevano di più → trasmettevano il collo lungo ai figli. Nel tempo, il collo lungo diventa la norma della specie.</p>
+      <p style="margin-top:10px">La differenza cruciale: per Lamarck l'animale <em>si trasforma perché vuole o ha bisogno</em>; per Darwin l'animale <em>sopravvive perché era già diverso</em>. Nessuna intenzionalità, nessun finalismo: solo variazione casuale e selezione cieca.</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}
+.leaflet-container{overflow:hidden;outline:0;background:#aad3df}
+.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}
+.leaflet-tile::selection{background:transparent}
+.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}
+.leaflet-zoom-animated{-webkit-transform-origin:0 0;transform-origin:0 0}
+.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-zoom-anim .leaflet-tile{transition:none}
+.leaflet-pan-anim .leaflet-tile,.leaflet-touching .leaflet-zoom-animated{transition:none}
+.leaflet-zoom-anim .leaflet-zoom-animated.leaflet-zoom-hide{visibility:hidden}
+.leaflet-interactive{cursor:pointer}
+.leaflet-grab{cursor:-webkit-grab;cursor:grab}
+.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}
+.leaflet-popup-pane,.leaflet-control{cursor:auto}
+.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:grabbing}
+.leaflet-image-layer,.leaflet-layer>canvas{position:absolute;left:0;top:0}
+.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container,.leaflet-tile-container svg,.leaflet-zoom-box{pointer-events:none}
+.leaflet-marker-icon.leaflet-interactive,.leaflet-image-layer.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}
+.leaflet-container.leaflet-touch-zoom{touch-action:pan-x pan-y}
+.leaflet-container.leaflet-touch-drag{touch-action:pinch-zoom;touch-action:none}
+.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{touch-action:none}
+.leaflet-container .leaflet-overlay-pane svg{-moz-user-select:none}
+.leaflet-pane{z-index:400}
+.leaflet-tile-pane{z-index:200}
+.leaflet-overlay-pane{z-index:400}
+.leaflet-shadow-pane{z-index:500}
+.leaflet-marker-pane{z-index:600}
+.leaflet-tooltip-pane{z-index:650}
+.leaflet-popup-pane{z-index:700}
+.leaflet-map-pane canvas{z-index:100}
+.leaflet-map-pane svg{z-index:200}
+.leaflet-vml-shape{width:1px;height:1px}
+.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}
+.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}
+.leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}
+.leaflet-top{top:0}
+.leaflet-right{right:0}
+.leaflet-bottom{bottom:0}
+.leaflet-left{left:0}
+.leaflet-control{float:left;clear:both}
+.leaflet-right .leaflet-control{float:right}
+.leaflet-top .leaflet-control{margin-top:10px}
+.leaflet-bottom .leaflet-control{margin-bottom:10px}
+.leaflet-left .leaflet-control{margin-left:10px}
+.leaflet-right .leaflet-control{margin-right:10px}
+.leaflet-fade-anim .leaflet-popup{opacity:0;transition:opacity .2s linear}
+.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}
+.leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-tile{filter:inherit;visibility:hidden}
+.leaflet-tile-loaded{visibility:inherit}
+.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}
+.leaflet-overlay-pane svg,.leaflet-zoom-box,.leaflet-marker-pane .leaflet-zoom-animated,.leaflet-shadow-pane .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}
+.leaflet-container{background:#dde;outline:0}
+.leaflet-container a{color:#0078a8}
+.leaflet-container a.leaflet-active{outline:2px solid orange}
+.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}
+.leaflet-container{font:12px/1.5 "Helvetica Neue",Arial,Helvetica,sans-serif}
+.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}
+.leaflet-bar a,.leaflet-bar a:hover{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#444}
+.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}
+.leaflet-bar a:hover,.leaflet-bar a:focus{background-color:#f4f4f4}
+.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}
+.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}
+.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}
+.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}
+.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}
+.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}
+.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px "Lucida Console",Monaco,monospace;text-indent:1px}
+.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}
+.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}
+.leaflet-control-layers-toggle{background-image:url(data:image/png;base64,);width:36px;height:36px}
+.leaflet-retina .leaflet-control-layers-toggle{background-size:26px 26px}
+.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}
+.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}
+.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}
+.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}
+.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}
+.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}
+.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}
+.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}
+.leaflet-default-icon-path{background-image:url(data:image/png;base64,)}
+.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}
+.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;font-size:11px}
+.leaflet-control-attribution a{text-decoration:none}
+.leaflet-control-attribution a:hover,.leaflet-control-attribution a:focus{text-decoration:underline}
+.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}
+.leaflet-left .leaflet-control-scale{margin-left:5px}
+.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}
+.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;font-size:11px;white-space:nowrap;overflow:hidden;-moz-box-sizing:border-box;box-sizing:border-box;background:#fff;background:rgba(255,255,255,.8)}
+.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}
+.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}
+.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar{box-shadow:none}
+.leaflet-touch .leaflet-control-layers,.leaflet-touch .leaflet-bar{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}
+.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}
+.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}
+.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-left:-20px;overflow:hidden;pointer-events:none}
+.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{pointer-events:auto}
+.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:transparent}
+.leaflet-popup-close-button:hover,.leaflet-popup-close-button:focus{color:#585858}
+.leaflet-popup-scrolled{overflow:auto}
+.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}
+.leaflet-oldie .leaflet-popup-tip{width:24px;-ms-filter:"progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678, M12=0.70710678, M21=-0.70710678, M22=0.70710678)";filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.70710678,M12=0.70710678,M21=-0.70710678,M22=0.70710678)}
+.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:1.08333em}
+.leaflet-popup-content p{margin:17px 0}
+.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}
+.leaflet-tooltip-top:before,.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{position:absolute;pointer-events:none;border:6px solid transparent;background:transparent;content:""}
+.leaflet-tooltip-bottom{margin-top:6px}
+.leaflet-tooltip-top{margin-top:-6px}
+.leaflet-tooltip-bubble{max-width:200px;white-space:normal}
+.leaflet-tooltip-left{margin-left:-6px}
+.leaflet-tooltip-right{margin-left:6px}
+.leaflet-tooltip-top:before{bottom:0;left:50%;margin-left:-6px;border-top-color:#fff}
+.leaflet-tooltip-bottom:before{top:0;left:50%;margin-left:-6px;border-bottom-color:#fff}
+.leaflet-tooltip-left:before{top:50%;right:0;margin-top:-6px;border-left-color:#fff}
+.leaflet-tooltip-right:before{top:50%;left:0;margin-top:-6px;border-right-color:#fff}
+.leaflet-disabled{pointer-events:none;cursor:default;opacity:.4}
+</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- VIAGGIO DEL BEAGLE -->
+<div id="beagle" class="section">
+  <h2>Il Viaggio del Beagle (1831–1836)</h2>
+  <div class="section-rule"></div>
+  <iframe
+    data-src="./mappa-beagle.html"
+    title="Mappa narrativa del viaggio del Beagle"
+    width="100%"
+    height="680"
+    allow="fullscreen; autoplay; encrypted-media"
+    allowfullscreen
+    style="border:0;border-radius:var(--radius);box-shadow:var(--shadow-md);display:block"
+  ></iframe>
+  <p style="font-size:.77rem;color:var(--ink-muted);margin-top:8px;text-align:center">
+    Usa le frecce o i tasti ← → per seguire il percorso · <a href="./mappa-beagle.html" target="_blank" style="color:var(--gold)">Apri la mappa a schermo intero ↗</a>
+  </p>
+</div>
+
+<!-- PREDECESSORI -->
+<div id="predecessori" class="section">
+  <h2>Predecessori e influenze</h2>
+  <div class="section-rule"></div>
+  <p style="margin-bottom:18px">Darwin non inventò l'evoluzione dal nulla. Ecco i pensatori che prepararono il terreno e quelli che ne condizionarono il metodo.</p>
+
+  <h3 style="margin:0 0 10px">I semi nel mondo antico</h3>
+  <div class="note-box" style="margin:0 0 24px;border-left-color:var(--gold)">
+    <p style="font-size:.88rem;line-height:1.75"><strong>Anassimandro di Mileto</strong> (610–546 a.C.): <em>«Dall'acqua e dalla terra, riscaldate dal sole, emersero esseri simili ai pesci. Man mano che si svilupparono raggiunsero la terra asciutta e vissero una vita diversa.»</em><br>Prima intuizione di una trasformazione delle forme viventi dall'acqua alla terra, duemilacinquecento anni prima di Darwin.</p>
+    <p style="font-size:.88rem;line-height:1.75;margin-top:12px"><strong>Empedocle di Agrigento</strong> (490–430 a.C.): <em>«All'inizio sulla terra spuntarono teste senza colli, braccia vagavano senza spalle, occhi senza fronte erravano solitari. Si univano per caso: solo le combinazioni funzionali sopravvissero.»</em><br>Una proto-selezione per eliminazione delle combinazioni fallimentari: l'idea che solo le strutture funzionali persistano.</p>
+  </div>
+
+  <div class="pred-grid">
+    <div class="pred-card">
+      <div class="pred-name">Erasmus Darwin</div>
+      <div class="pred-year">1731–1802 — nonno</div>
+      <div class="pred-desc">Nel <em>Zoonomia</em> (1794) suggerisce che gli esseri viventi si trasformano nel tempo per adattarsi. Speculazione poetica, non sistema scientifico — ma Darwin la conosce da bambino.</div>
+    </div>
+    <div class="pred-card">
+      <div class="pred-name">Jean-Baptiste Lamarck</div>
+      <div class="pred-year">1744–1829</div>
+      <div class="pred-desc">Prima teoria sistematica dell'evoluzione: le specie cambiano per l'uso/disuso degli organi e trasmettono i caratteri acquisiti. Darwin rifiuta il meccanismo, ma riconosce il problema biologico.</div>
+    </div>
+    <div class="pred-card">
+      <div class="pred-name">Charles Lyell</div>
+      <div class="pred-year">1797–1875 — geologia</div>
+      <div class="pred-desc"><em>Principi di geologia</em> (1830): la Terra si trasforma lentamente per cause ancora attive oggi (uniformitarismo). Fornisce a Darwin il tempo profondo necessario alla selezione naturale. Darwin porta Lyell sul Beagle.</div>
+    </div>
+    <div class="pred-card">
+      <div class="pred-name">Thomas Malthus</div>
+      <div class="pred-year">1766–1834 — economia</div>
+      <div class="pred-desc"><em>Saggio sulla popolazione</em> (1798): le popolazioni crescono più velocemente delle risorse → lotta per la sopravvivenza. Darwin legge Malthus nel 1838 e ha la sua "intuizione chiave".</div>
+    </div>
+    <div class="pred-card">
+      <div class="pred-name">Georges Cuvier</div>
+      <div class="pred-year">1769–1832 — anatomia</div>
+      <div class="pred-desc">Fonda l'anatomia comparata e paleontologia. Dimostra l'estinzione delle specie, ma è fissista: le estinzioni sono catastrofi, non trasformazioni. Darwin deve confrontarsi con lui.</div>
+    </div>
+    <div class="pred-card">
+      <div class="pred-name">Alfred Russel Wallace</div>
+      <div class="pred-year">1823–1913 — co-scopritore</div>
+      <div class="pred-desc">Raggiunge la stessa teoria di Darwin independentemente nel 1858, inviandogli il manoscritto. Presentazione congiunta alla Linnean Society. Wallace rimane più darwinista di Darwin in alcuni aspetti.</div>
+    </div>
+    <div class="pred-card">
+      <div class="pred-name">Georges-Louis Buffon</div>
+      <div class="pred-year">1707–1788</div>
+      <div class="pred-desc">Nel monumentale <em>Histoire Naturelle</em> (44 volumi) suggerisce che le specie possano degenerare o trasformarsi sotto l'influenza dell'ambiente. Non formula una teoria sistematica, ma scalfisce il fissismo con osservazioni empiriche dettagliate.</div>
+    </div>
+    <div class="pred-card">
+      <div class="pred-name">Étienne Geoffroy Saint-Hilaire</div>
+      <div class="pred-year">1772–1844</div>
+      <div class="pred-desc">Sostiene l'<em>unité de plan</em>: tutti gli animali condividono un piano strutturale di base, modificato. Si scontra con Cuvier nel celebre dibattito del 1830 all'Académie des Sciences di Parigi — che mobilita tutta la comunità scientifica europea.</div>
+    </div>
+  </div>
+  <h3>Il fissismo come orizzonte pre-darwiniano</h3>
+  <p>Prima del 1859, il modello dominante in Europa è il <strong>fissismo</strong>: le specie sono create separatamente, sono immutabili, e ogni essere vivente corrisponde a un'idea nella mente di Dio. In Inghilterra la teologia naturale (William Paley, <em>Natural Theology</em>, 1802) vede l'adattamento degli organismi come prova di un Creatore intelligente: l'occhio è come un orologio, e un orologio presuppone un orologiaio. Darwin conosce bene Paley — a Cambridge lo studia obbligatoriamente. L'<em>Origine</em> demolisce sistematicamente ogni necessità del Creatore come spiegazione biologica: la complessità dell'occhio può emergere per gradi, per selezione cumulativa.</p>
+</div>
+
+<!-- OPERA -->
+<div id="opera" class="section">
+  <h2>Le opere principali</h2>
+  <div class="section-rule"></div>
+  <div class="opera-grid">
+    <div class="book-card">
+      <div class="book-title">Diario di viaggio del naturalista</div>
+      <div class="book-year">1839</div>
+      <div class="book-desc">Resoconto del viaggio del Beagle. Bestseller immediato. Mostra Darwin come scrittore brillante, non solo scienziato. Contiene le prime osservazioni che alimenteranno la teoria.</div>
+    </div>
+    <div class="book-card">
+      <div class="book-title">L'origine delle specie</div>
+      <div class="book-year">1859 — 6 edizioni</div>
+      <div class="book-desc">Il capolavoro. Presenta la teoria della selezione naturale con un'enorme massa di prove empiriche. Il titolo completo: <em>L'origine delle specie per mezzo della selezione naturale, ovvero la conservazione delle razze favorite nella lotta per la vita</em>.</div>
+    </div>
+    <div class="book-card">
+      <div class="book-title">La variazione degli animali e delle piante allo stato domestico</div>
+      <div class="book-year">1868</div>
+      <div class="book-desc">Studia come l'allevamento selettivo umano produca variazioni: la "selezione artificiale" come modello per la selezione naturale. Introduce la teoria della "pangènesi" per spiegare l'ereditarietà.</div>
+    </div>
+    <div class="book-card">
+      <div class="book-title">L'origine dell'uomo e la selezione sessuale</div>
+      <div class="book-year">1871</div>
+      <div class="book-desc">Applica l'evoluzione all'<em>Homo sapiens</em>. Sviluppa la teoria della selezione sessuale. Sostiene l'origine africana dell'umanità. Massima controversia: attacca l'eccezionalismo umano.</div>
+    </div>
+    <div class="book-card">
+      <div class="book-title">L'espressione delle emozioni nell'uomo e negli animali</div>
+      <div class="book-year">1872</div>
+      <div class="book-desc">Le emozioni come caratteri evolutivi condivisi con altri animali. Primo studio sistematico dell'espressione facciale. Anticipa l'etologia e la psicologia evolutiva del XX secolo.</div>
+    </div>
+    <div class="book-card">
+      <div class="book-title">La formazione del terreno vegetale</div>
+      <div class="book-year">1881</div>
+      <div class="book-desc">Ultima opera: studio dei lombrichi e del loro ruolo nella formazione del suolo. Paradossalmente uno dei più venduti in vita sua. Mostra Darwin attento ai processi lenti e cumulativi.</div>
+    </div>
+  </div>
+</div>
+
+<!-- MENDEL -->
+<div id="mendel" class="section"></div>
+
+<!-- IMPATTO -->
+<div id="impatto" class="section">
+  <h2>Impatto culturale e filosofico</h2>
+  <div class="section-rule"></div>
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="impact-title">🦍 Impatto sulla concezione dell'uomo</div>
+      <div class="impact-desc">L'uomo non è una creazione separata ma una specie animale. Il DNA umano condivide il 95% con quello degli scimpanzé e il 50% con quello di un fungo. L'<em>Origine dell'uomo</em> (1871) completa la rivoluzione: l'evoluzione include <em>Homo sapiens</em>, con un'origine africana — che Darwin anticipa senza prove fossili dirette.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-title">🌍 La rivoluzione copernicana della biologia</div>
+      <div class="impact-desc">Come Copernico tolse la Terra dal centro dell'universo, Darwin tolse l'uomo dal centro della natura. Freud citerà Darwin come la seconda delle tre grandi "ferite narcisistiche" dell'umanità: dopo Copernico (non siamo al centro del cosmo) e prima di Freud stesso (non siamo padroni del nostro inconscio).</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-title">🎩 Il dibattito di Oxford (1860)</div>
+      <div class="impact-desc">Il vescovo Samuel Wilberforce chiede a Thomas Huxley: <em>«Di grazia, lei discende da una scimmia per parte di madre o di padre?»</em> Huxley risponde: <em>«Preferirei avere una scimmia come antenato piuttosto che un uomo che usa il suo ingegno per oscurare la verità.»</em> L'episodio — riportato da Hooker — diventa il simbolo dello scontro scienza/religione nell'era vittoriana.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-title">🕊 L'agnosticismo di Darwin</div>
+      <div class="impact-desc">In una lettera del 1879 Darwin scrive: <em>«La descrizione più esatta del mio stato di spirito è quella dell'agnosticismo.»</em> Non è ateo dichiarato, ma rifiuta la certezza teologica. La sua crisi religiosa è lenta e progressiva, legata anche alla morte della figlia Annie nel 1851.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-title">⚠️ Darwinismo sociale</div>
+      <div class="impact-desc">Herbert Spencer (non Darwin) applica la "lotta per l'esistenza" alla società: i ricchi sopravvivono perché più adatti. Questa distorsione ideologica giustifica colonialismo, eugenetica, totalitarismi. Darwin non ha alcuna responsabilità: la selezione naturale non ha norme morali, non prescrive chi debba vincere nella società.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-title">🧩 Intelligent Design</div>
+      <div class="impact-desc">L'Intelligent Design ammette che le specie cambino, ma sostiene che l'evoluzione sia guidata verso un fine da un'intelligenza. Questo contraddice il meccanismo <em>cieco</em> della selezione naturale. L'ID non è scienza: non formula previsioni falsificabili. Nel 2005 un tribunale USA (<em>Kitzmiller v. Dover</em>) lo esclude dall'insegnamento scientifico nelle scuole pubbliche.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-title">📚 Problemi nell'insegnamento</div>
+      <div class="impact-desc">In Turchia (2019) l'evoluzione è stata rimossa dai programmi delle scuole secondarie. Negli USA il sistema federale lascia ai singoli stati il controllo dei programmi: gli stati del Sud sono sistematicamente più creazionisti. Il Pew Research Center documenta che circa il 40% degli americani rifiuta l'evoluzione per motivi religiosi.</div>
+    </div>
+  </div>
+  <div class="note-box">
+    <p><strong>Nota metodologica.</strong> Il darwinismo non risponde alla domanda sull'origine della vita (abiogenesi), né alla domanda sul perché esista qualcosa piuttosto che niente. Risponde a una domanda circoscritta: dato che la vita esiste, come si spiega la diversità delle specie? La risposta: selezione naturale su variazioni casuali nel tempo geologico.</p>
+  </div>
+</div>
+<!-- LETTURE -->
+<div id="letture" class="section">
+  <h2>Letture consigliate</h2>
+  <div class="section-rule"></div>
+  <p style="margin-bottom:18px">Per chi vuole andare oltre la dashboard: libri accessibili, scelti per approfondire la teoria dell'evoluzione e il suo statuto scientifico.</p>
+  <div class="read-list">
+    <div class="read-card">
+      <div class="read-spine">TP</div>
+      <div>
+        <div class="read-title">La teoria dell'evoluzione. Attualità di una rivoluzione scientifica</div>
+        <div class="read-author">Telmo Pievani</div>
+        <div class="read-meta">Il Mulino, collana “Farsi un'idea” · ed. aggiornata 2017</div>
+        <p class="read-desc">Un'introduzione breve e densa ai fondamenti della teoria. Parte dal nucleo darwiniano (variazione, ereditarietà, selezione) e mostra i meccanismi che oggi lo integrano: deriva genetica, migrazioni, simbiosi, grandi crisi della biosfera. Si chiude sulla comparsa di <em>Homo sapiens</em> come ramo imprevedibile della storia naturale. Pievani è filosofo della biologia all'Università di Padova.</p>
+        <div class="read-tags"><span>Italiano</span><span>Introduzione</span><span>Filosofia della biologia</span></div>
+      </div>
+    </div>
+    <div class="read-card">
+      <div class="read-spine">JC</div>
+      <div>
+        <div class="read-title">Why Evolution Is True</div>
+        <div class="read-author">Jerry A. Coyne</div>
+        <div class="read-meta">Viking / Oxford University Press · 2009 — trad. it. <em>Perché l'evoluzione è vera</em>, Codice Edizioni, 2011</div>
+        <p class="read-desc">Un genetista evoluzionista dell'Università di Chicago raccoglie le prove dell'evoluzione, capitolo per capitolo: fossili di transizione come <em>Tiktaalik</em>, organi vestigiali e “cattivo design”, biogeografia delle isole, selezione naturale e sessuale, speciazione, evoluzione umana. Non si limita a confutare il creazionismo: mostra perché l'evoluzione fa previsioni che i dati confermano. Ottimo complemento alle schede su Paley e sull'Intelligent Design.</p>
+        <div class="read-tags"><span>Inglese / Italiano</span><span>Divulgazione</span><span>Le prove dell'evoluzione</span></div>
+      </div>
+    </div>
+  </div>
+  <h3>Online</h3>
+  <a class="read-link" href="https://www.lescienze.it/news/2015/07/18/news/evoluzione_confutazione_obiezioni_creazioniste_creazionismo-2694916/" target="_blank" rel="noopener">
+    <div class="read-link-src">Le Scienze · 18 luglio 2015</div>
+    <div class="read-link-title">Quindici risposte al nonsenso creazionista</div>
+    <div class="read-link-author">John Rennie / Scientific American</div>
+    <div class="read-link-desc">Quindici obiezioni classiche all'evoluzione, da “è solo una teoria” alla mancanza di fossili di transizione, ciascuna seguita dalla risposta della scienza. Da leggere insieme a Coyne e alla scheda sull'Intelligent Design.</div>
+    <div class="read-link-go">Apri l'articolo ↗</div>
+  </a>
+</div>
+
+<script>
+// ── STOP DATA ───────────────────────────────────────────────────────────────
+const stopData = [
+  { name: "Plymouth, Inghilterra", lat: 50.37, lon: -4.14, date: "27 dicembre 1831",
+    desc: "Il Beagle salpa il 27 dicembre 1831. Darwin, 22 anni, è a bordo come 'naturalista e gentiluomo di compagnia' del capitano FitzRoy. Soffre enormemente il mal di mare per tutta la traversata atlantica.",
+    insight: "Darwin porta con sé il primo volume dei 'Principi di geologia' di Lyell — lettura che trasformerà il suo modo di vedere il tempo e la terra." },
+  { name: "Isole Canarie e Capo Verde", lat: 14.9, lon: -23.5, date: "Gennaio 1832",
+    desc: "Prima sosta. A Tenerife viene bloccato per quarantena. Alle isole di Capo Verde (Sant'Iago) osserva strati di roccia vulcanica con conchiglie fossili in quota: la terra si è alzata nel tempo.",
+    insight: "La geologia di Capo Verde gli fa capire quanto Lyell avesse ragione: la terraferma si muove lentamente. Scrive: 'Lyell illumina tutto quello che vedo'." },
+  { name: "Salvador, Brasile", lat: -12.97, lon: -38.5, date: "Febbraio–luglio 1832",
+    desc: "Prima vera immersione nella foresta tropicale. Darwin è travolto dalla biodiversità: insetti, uccelli, piante. Raccoglie migliaia di campioni. Osserva per la prima volta la tratta degli schiavi: un trauma morale duraturo.",
+    insight: "L'abbondanza di specie nelle foreste tropicali pone la prima domanda: perché così tanta varietà? Come sono arrivate tutte qui?" },
+  { name: "Rio de Janeiro", lat: -22.9, lon: -43.17, date: "Aprile–luglio 1832",
+    desc: "Base operativa per escursioni nell'entroterra. Darwin compie spedizioni da solo. Raccoglie enormi quantità di invertebrati. Abbozza le prime riflessioni sulla distribuzione geografica delle specie.",
+    insight: "Nota che specie diverse ma simili occupano habitat simili in zone diverse — domanda che non sa ancora rispondere." },
+  { name: "Patagonia e Montevideo", lat: -34.9, lon: -56.2, date: "Luglio 1832 – luglio 1834",
+    desc: "Stazione principale per due anni. Darwin scava fossili di grandi mammiferi estinti (Megatherium, Toxodon, Macrauchenia) straordinariamente simili agli animali viventi della stessa regione ma enormemente più grandi.",
+    insight: "Perché gli animali estinti di un posto assomigliano agli animali viventi dello stesso posto? La risposta — discendenza con modificazione — è già lì, ma Darwin non la formula ancora." },
+  { name: "Terra del Fuoco e Capo Horn", lat: -54.8, lon: -68.3, date: "Dicembre 1832 – febbraio 1833",
+    desc: "Punto più australe del viaggio. Darwin incontra gli indios Fuegini che vivono quasi nudi in un clima gelido. FitzRoy aveva portato tre Fuegini a Londra per 'civilizzarli'; ora li riporta a casa.",
+    insight: "L'episodio dei Fuegini alimenta le riflessioni sull'unità della specie umana e sulle differenze culturali. Cruciale per 'L'origine dell'uomo' del 1871." },
+  { name: "Cile (Valparaíso e Concepción)", lat: -33.0, lon: -71.6, date: "Luglio 1834 – luglio 1835",
+    desc: "Darwin risale la cordigliera delle Ande e trova fossili marini a 3.000 m di altitudine. A Concepción assiste a un devastante terremoto: vede la costa sollevarsi di due metri in pochi secondi.",
+    insight: "Il terremoto è la prova diretta di Lyell: la terra si muove per accumulo di piccoli eventi. I fossili in quota erano stati lì, sotto il mare, e poi sollevati." },
+  { name: "Lima e Callao, Perù", lat: -12.07, lon: -77.15, date: "Luglio–settembre 1835",
+    desc: "Ultima tappa sudamericana. Darwin osserva la corrente di Humboldt — acque fredde del Pacifico — e la sua influenza sul clima e sulla biodiversità costiera.",
+    insight: "La distribuzione degli organismi dipende anche da fattori fisici (correnti, clima): non solo la storia, ma l'ambiente attuale modella le comunità biologiche." },
+  { name: "★ Arcipelago delle Galápagos", lat: -0.95, lon: -90.96, date: "Settembre–ottobre 1835",
+    desc: "Le cinque settimane più famose della storia della scienza. Darwin visita quattro isole. Osserva varietà locali di fringuelli, iguane marine, tartarughe giganti. Il governatore gli dice che le tartarughe di isole diverse sono distinguibili.",
+    insight: "Solo al ritorno in Inghilterra Darwin capirà la portata delle Galápagos: specie simili ma diverse su isole vicine → discendenza comune + adattamento all'isolamento. I 'fringuelli di Darwin' diventano il simbolo dell'evoluzione.", galapagos: true },
+  { name: "Tahiti", lat: -17.53, lon: -149.57, date: "Novembre 1835",
+    desc: "Sosta breve ma significativa. Darwin è affascinato dai Tahitiani. Osserva i coral reef e abbozza la teoria della loro formazione per abbassamento lento dei fondali.",
+    insight: "La teoria degli atolli (1842) è la prima grande teoria scientifica che Darwin pubblica e rispecchia il suo metodo: pensiero su grande scala temporale." },
+  { name: "Nuova Zelanda", lat: -43.5, lon: 172.6, date: "Dicembre 1835",
+    desc: "Darwin osserva la fauna indigena e gli effetti devastanti della colonizzazione europea sulle popolazioni Maori. Le specie introdotte dall'uomo stanno estinguendo le specie native.",
+    insight: "Esempio vivente di come la competizione plasmi le comunità biologiche — la selezione naturale non è solo storia geologica ma avviene sotto gli occhi di Darwin." },
+  { name: "Sydney e Australia", lat: -33.87, lon: 151.21, date: "Gennaio–marzo 1836",
+    desc: "Darwin è colpito dai marsupiali: animali simili ai placentati europei ma con soluzioni evolutive diverse. Scrive: 'Sembra che due Creatori abbiano lavorato separatamente'.",
+    insight: "I marsupiali australiani vs. i placentati: stesso problema adattativo, soluzioni diverse. La 'convergenza evolutiva' suggerisce l'assenza di piano, la prevalenza del caso e della necessità." },
+  { name: "Isole Keeling (Cocos)", lat: -12.17, lon: 96.83, date: "Aprile 1836",
+    desc: "Atollo corallino nell'Oceano Indiano. Darwin verifica le sue teorie sulla formazione dei coral reef. Misura e osserva la struttura dell'atollo con cura metodica.",
+    insight: "La corrispondenza tra teoria e osservazione conferma il metodo ipotetico-deduttivo: si può fare scienza rigorosa su scale temporali inosservabili." },
+  { name: "Mauritius", lat: -20.16, lon: 57.5, date: "Aprile–maggio 1836",
+    desc: "Visita breve. Le lettere di Henslow, lette pubblicamente alle conferenze scientifiche di Cambridge, hanno già reso Darwin famoso in Inghilterra prima che metta piede a casa.",
+    insight: "Darwin è già uno scienziato celebre prima del ritorno. L'attesa della pubblicazione dell'Origine durerà ancora 23 anni per paura delle reazioni." },
+  { name: "Capo di Buona Speranza", lat: -34.36, lon: 18.48, date: "Giugno 1836",
+    desc: "Ultima tappa importante. Darwin incontra l'astronomo John Herschel — una delle sue figure intellettuali di riferimento — e discute di metodologia scientifica.",
+    insight: "Herschel è l'autore del 'Discorso sullo studio della filosofia naturale' (1831) che Darwin aveva letto con entusiasmo a Cambridge. L'incontro al Capo chiude simbolicamente un cerchio intellettuale." }
+];
+
+// ── LEAFLET MAP ──────────────────────────────────────────────────────────────
+let mapInited = false;
+let leafletMap = null;
+
+function initBeagleMap() {
+  if (mapInited) return;
+  mapInited = true;
+
+  leafletMap = L.map('leaflet-map', { worldCopyJump: false }).setView([10, 0], 2);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 10
+  }).addTo(leafletMap);
+
+  // Outbound route: Plymouth → Galápagos → Tahiti
+  const outbound = stopData.slice(0, 10).map(s => [s.lat, s.lon]);
+  L.polyline(outbound, { color: '#8B1A1A', weight: 2.5, dashArray: '8,5', opacity: 0.85 }).addTo(leafletMap);
+
+  // Pacific leg westward: Tahiti → NZ (shift NZ longitude -360 to draw west)
+  // then NZ → Sydney → Keeling → Mauritius → Cape
+  const pacificAndIndian = [
+    [-17.53, -149.57],  // Tahiti
+    [-43.5,  172.6 - 360],  // NZ at -187.4
+    [-33.87, 151.21 - 360], // Sydney at -208.79
+    [-12.17, 96.83 - 360],  // Keeling at -263.17
+    [-20.16, 57.5 - 360],   // Mauritius at -302.5
+    [-34.36, 18.48 - 360],  // Cape at -341.52
+  ];
+  L.polyline(pacificAndIndian, { color: '#1A4A8B', weight: 2, dashArray: '5,6', opacity: 0.75 }).addTo(leafletMap);
+
+  // Return leg: Cape → St Helena → Ascension → Bahia → Azores → Plymouth
+  const returnLeg = [
+    [-34.36,  18.48],
+    [-15.96,  -5.72],
+    [ -7.92, -14.42],
+    [-12.97, -38.5],
+    [ 37.74, -25.67],
+    [ 50.37,  -4.14]
+  ];
+  L.polyline(returnLeg, { color: '#1A4A8B', weight: 2, dashArray: '5,6', opacity: 0.75 }).addTo(leafletMap);
+
+  // Markers
+  stopData.forEach((s, i) => {
+    const isGal = !!s.galapagos;
+    const bg = isGal ? '#4A7C20' : '#C4993A';
+    const label = isGal ? '★' : (i + 1);
+    const size = isGal ? 28 : 24;
+    const icon = L.divIcon({
+      html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${bg};color:#fff;font-size:${isGal?11:9}px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer">${label}</div>`,
+      className: '',
+      iconSize: [size, size],
+      iconAnchor: [size/2, size/2]
+    });
+    L.marker([s.lat, s.lon], { icon }).addTo(leafletMap).on('click', () => showStop(i));
+  });
+
+  buildStopsLegend();
+}
+
+// ── STOP INFO PANEL ──────────────────────────────────────────────────────────
+function showStop(idx) {
+  const s = stopData[idx];
+  document.getElementById('stop-info-title').textContent = s.name;
+  document.getElementById('stop-info-date').textContent = s.date;
+  document.getElementById('stop-info-desc').textContent = s.desc;
+  document.getElementById('stop-info-insight').textContent = '💡 ' + s.insight;
+  const panel = document.getElementById('stop-info-panel');
+  panel.classList.add('visible');
+  if (leafletMap) leafletMap.setView([s.lat, s.lon], 4, { animate: true });
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function closeStopInfo() {
+  document.getElementById('stop-info-panel').classList.remove('visible');
+  if (leafletMap) leafletMap.setView([10, 0], 2, { animate: true });
+}
+
+function buildStopsLegend() {
+  const legend = document.getElementById('stops-legend');
+  if (!legend || legend.children.length > 0) return;
+  stopData.forEach((s, i) => {
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.onclick = () => showStop(i);
+    const isGal = !!s.galapagos;
+    const numClass = isGal ? 'legend-num gal' : 'legend-num';
+    const numText = isGal ? '★' : (i + 1);
+    item.innerHTML = `<span class="${numClass}">${numText}</span><span>${s.name}</span>`;
+    legend.appendChild(item);
+  });
+}
+
+// ── NAVIGATION ───────────────────────────────────────────────────────────────
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  document.getElementById('btn-' + id).classList.add('active');
+  if (id === 'beagle') {
+    const f = document.querySelector('#beagle iframe[data-src]');
+    if (f && !f.getAttribute('src')) f.setAttribute('src', f.dataset.src);
+  }
+}
+
+function toggleConcept(card) {
+  card.classList.toggle('open');
+}
+</script>
+<script src="mendel.js" charset="utf-8"></script>
+</body>
+</html>
